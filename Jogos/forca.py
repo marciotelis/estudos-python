@@ -1,11 +1,13 @@
 import random
 
 
+
 def jogar():
 
     imprime_mensagem_abertura()
     palavra_secreta = carrega_palavra_secreta()
     letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
+    print(letras_acertadas)
 
     enforcou = False
     acertou = False
@@ -13,15 +15,10 @@ def jogar():
 
     while(not enforcou and not acertou):
 
-        chute = input("Qual letra? ")
-        chute = chute.strip().upper()   # Se tiver espaço antes ou depois não considera e todas letras são maiúsculas
+        chute = pede_chute()
 
         if(chute in palavra_secreta):
-            index = 0
-            for letra in palavra_secreta:
-                if(chute == letra): # usa o upper pra passar tudo pra maiúscula pra não ter diferença se o usuário digitar maiúsculo ou minúsculo
-                    letras_acertadas[index] = letra
-                index += 1
+            mostra_letra_certa(chute, palavra_secreta, letras_acertadas)
         else:
             erros += 1
 
@@ -31,13 +28,11 @@ def jogar():
         print(letras_acertadas)
 
     if(acertou):
-        print("Você ganhou!")
-        print()
+        print("Você ganhou!\n")
     else:
-        print("Você perdeu!")
-        print()
+        print("Você perdeu!\n")
 
-    print("fim do jogo!")
+    print("fim do jogo!\n")
 
 
 def imprime_mensagem_abertura():
@@ -63,6 +58,20 @@ def carrega_palavra_secreta():
 
 def inicializa_letras_acertadas(palavra):
     return ["_" for letra in palavra]
+
+
+def pede_chute():
+    chute = input("Qual letra? ")
+    chute = chute.strip().upper()   # Se tiver espaço antes ou depois não considera e todas letras são maiúsculas
+    return chute
+
+
+def mostra_letra_certa(chute, palavra_secreta, letras_acertadas):
+    index = 0
+    for letra in palavra_secreta:
+        if(chute == letra): # usa o upper pra passar tudo pra maiúscula pra não ter diferença se o usuário digitar maiúsculo ou minúsculo
+            letras_acertadas[index] = letra
+        index += 1
 
 
 # Se for executado direto este será o main e então executará, senão não executa (para não executar no import)

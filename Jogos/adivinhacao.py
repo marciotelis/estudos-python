@@ -1,10 +1,14 @@
+import random
+
 print("**********************************")
 print("Bem vindo ao jogo de adivinhação!")
 print("**********************************")
 
-numero_secreto = 42
+# o random.random() gera um número entre 0 e 1. O random.randrange() dá a chance de dizer entre quais números é pra gerar
+numero_secreto = round(random.randrange(1,101))
 numero_tentativas = 3
 rodada = 1
+print(numero_secreto)
 
 while(rodada <= numero_tentativas):
     #print("rodada nº ", rodada, " do total de ", numero_tentativas)
@@ -45,30 +49,32 @@ print("Fim do jogo")
 
 
 # Teste do for--------------------------------------------------------------------------------
-for variavel in range(1, 10):  # for conta de 1 a 9 (é enquanto for menor que 10)
-    print(variavel)
 
-print()
-for variavel in range(1, 10, 2):  # for igual ao de cima porém incrementando de 2 em 2
-    print(variavel)
+# for variavel in range(1, 10):  # for conta de 1 a 9 (é enquanto for menor que 10)
+#     print(variavel)
 
-# ----------------------------------------------------------------------------------------------
+# print()
+# for variavel in range(1, 10, 2):  # for igual ao de cima porém incrementando de 2 em 2
+#     print(variavel)
+
+# ---------------------------------------------------------------------------------------------
 
 
 # Teste de mais formatações de strings----------------------------------------------------------------------
 
-# indica que é float
-print("R$ {:f}".format(4.5))
+# # indica que é float
+# print("R$ {:f}".format(4.5))
 
-# diz que quer 2 casas decimais
-print("R$ {:.2f}".format(4.5))
+# # diz que quer 2 casas decimais
+# print("R$ {:.2f}".format(4.5))
 
-# diz que são um total de 5 dígitos e 2 são depois da vírgula. Completa o que falta com espaço em branco
-print("R$ {:5.2f}".format(4.5))
+# # diz que são um total de 5 dígitos e 2 são depois da vírgula. Completa o que falta com espaço em branco
+# print("R$ {:5.2f}".format(4.5))
 
-# diz que são um total de 5 dígitos e 2 são depois da vírgula. Completa o que falta com 0
-print("R$ {:05.2f}".format(4.5))
+# # diz que são um total de 5 dígitos e 2 são depois da vírgula. Completa o que falta com 0
+# print("R$ {:05.2f}".format(4.5))
 
-# definir inteiro
-print("{:02d}/{:02d}/{:4d}".format(27, 3, 2020))
-#------------------------------------------------------------------------------------------------------------
+# # definir inteiro
+# print("{:02d}/{:02d}/{:4d}".format(27, 3, 2020))
+
+# ------------------------------------------------------------------------------------------------------------

@@ -69,4 +69,6 @@ print("R$ {:5.2f}".format(4.5))
 # diz que são um total de 5 dígitos e 2 são depois da vírgula. Completa o que falta com 0
 print("R$ {:05.2f}".format(4.5))
 
+# definir inteiro
+print("{:02d}/{:02d}/{:4d}".format(27, 3, 2020))
 #------------------------------------------------------------------------------------------------------------

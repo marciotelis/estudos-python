@@ -7,7 +7,9 @@ numero_tentativas = 3
 rodada = 1
 
 while(rodada <= numero_tentativas):
-    print("rodada nº ", rodada, " do total de ", numero_tentativas)
+    #print("rodada nº ", rodada, " do total de ", numero_tentativas)
+    print("rodada nº {} do total de {}".format(
+        rodada, numero_tentativas))  # formatando a string
 
     # O input sempre retorna uma variável str
     chute = input("Digite o seu número: ")
@@ -28,10 +30,10 @@ while(rodada <= numero_tentativas):
             print("Você errou, seu chute foi MAIOR que o número secreto")
         else:
             print("Você errou, seu chute foi MENOR que o número secreto")
-        
+
         print("Você tem mais ", (numero_tentativas - rodada), " tentativas")
         rodada = rodada + 1
         print("")
-        
+
 print()
 print("Fim do jogo")

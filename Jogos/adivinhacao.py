@@ -12,11 +12,16 @@ while(rodada <= numero_tentativas):
         rodada, numero_tentativas))  # formatando a string
 
     # O input sempre retorna uma variável str
-    chute = input("Digite o seu número: ")
+    chute = input("Digite o seu número entre 1 e 100: ")
     chute = int(chute)
 
     print("Você digitou ", chute)
     print("")
+
+    if((chute < 1) or (chute > 100)):
+        print("Você deve digitar um número emtre 1 e 100!")
+        print("")
+        continue
 
     # Melhorando a legibilidade podemos já fazer algumas regras (porém não é obrigatório)
     acertou = chute == numero_secreto
@@ -24,7 +29,7 @@ while(rodada <= numero_tentativas):
 
     if (acertou):   # Atentar a sempre colocar os :
         print("Você acertou")
-        rodada = 4
+        break
     else:
         if(maior):
             print("Você errou, seu chute foi MAIOR que o número secreto")

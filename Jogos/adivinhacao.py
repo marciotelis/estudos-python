@@ -37,3 +37,14 @@ while(rodada <= numero_tentativas):
 
 print()
 print("Fim do jogo")
+
+
+# Teste do for--------------------------------------------------------------------------------
+for variavel in range(1, 10):  # for conta de 1 a 9 (é enquanto for menor que 10)
+    print(variavel)
+
+print()
+for variavel in range(1, 10, 2):  # for igual ao de cima porém incrementando de 2 em 2
+    print(variavel)
+
+#----------------------------------------------------------------------------------------------

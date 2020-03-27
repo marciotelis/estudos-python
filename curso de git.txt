@@ -1,0 +1,77 @@
+Principais funcionalidades e comandos do git:
+
+para indicar que esta pasta é um repositório git devemos iniciá-la:
+    git init
+    git add . //adicionamos tudo que tiver nela já, se tiver algo
+    git commit -m "mensagem"
+
+    //Desta forma iniciou-se o git e se colocou na branch master do computador todos arquivos até então criados e testados (nunca dar commit em código que não funciona)
+
+Vinculando este repositório a algum repositório remoto:
+    git remote add origin https://github.com/marciotelis/teste  //indiquei que este repositório estará ligado a este git no github
+
+
+Quando se realizam os commits necessários e se quer atualizar no repositório remoto:
+    git push origin master
+
+
+Estes são os principais comandos e que dão toda a funcionalidade. Agora alguns comandos para ir monitorando o processo:
+    git log //ver o histórico de commits
+    git log --oneline //ve tudo mais organizado em uma linha e sem muita informação
+    git log -p // mostra as modificações
+
+    git status //vai mostrar o status que está a pasta, se há algo adicionado para ser comitado, se há algo a ser adicionado que foi modificado, etc
+
+Comandos de configuração:
+    git config --global user.name "Marcio" //configura em todo computador o username
+    git config --global user.email "marciotelis@garten.com.br" //configura em todo o computador o email
+
+    Pode utilizar ao invés de global local para indicar que é apenas para esta pasta, assim deixando alguma pasta configurada com usuário diferente
+    
+Pode utilizar um arquivo com o nome .gitignore e tudo que estiver dentro dele não vai ser supervisionado pelo git
+É só colocar o nome do arquivo que o git já não considera.
+Para isso acontecer tem que adicionar e commitar o .gitignore
+
+
+Puxando um repositório remoto para o local:
+    git clone https://github.com/marciotelis/projeto-a-ser-clonado nome_do_projeto
+podemos também atualizar nossos projetos, utilizando o pull:
+    git pull origin master //neste caso já foi indicado que o repositório remoto é o endereço com o git remote add
+
+
+Utilizando branches:
+    git branch //ve todas as branches que existem e já indica em qual se está trabalhando
+    git branch nome-da-branch //cria uma branch
+    git checkout nome-da-branch //vai para a branch indicada
+    git checkout -b nome-da-branch //cria uma branch e ao mesmo tempo já vai para esta branch
+
+Juntando o trabalho de uma branch com outra:
+    //vai na branch master e indica que vai juntar
+    git merge nome-da-branch
+
+Excluir alterações de algum commit:
+    git revert código-do-commit
+
+Navegando entre os commits:
+    git checkout código-do-commit
+    //assim se está no commit mas qualquer alteração não será valida, para fazer valer e começar a alterar a partir daqui deve-se fazer uma nova branch aqui 
+    git checkout -b nova-branch
+
+Salvando para depois:
+    git stash //coloca todas alterações realizadas agora que não estão commitadas em um arquivo salvo porém que não atrapalhará para commitar outra coisa depois. Este não irá ser adicionado
+    git stash list //lista todos arquivos na pilha stash
+    git stash apply 0 //pega o arquivo para trabalhar novamente nele (porém não o exclui da lista de salvos, deve-se fazer depois com git stash drop)
+    git stash pop //pega o arquivo e já o exclui da lista (sem precisar fazer o drop depois)
+
+Ver as alteração que foram realizadas de um commit até o outro:
+    git diff código-commit-inicial..código-commit-final 
+    git diff //mostra o que foi modificado desde o último commit
+
+
+Definir um marco (uma release):
+    git tag nome-da-versão -m "mensagem"
+    //Este marco depois de enviado para o repositório fica salvo para sempre como um release. Desta forma tem-se uma versão final que pode sempre ser baixada e trabalhar e atualizações
+
+
+
+ 

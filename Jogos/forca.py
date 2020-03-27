@@ -1,22 +1,11 @@
 import random
 
+
 def jogar():
-    print("**********************************")
-    print("   Bem vindo ao jogo da forca!")
-    print("**********************************")
 
-    # MANIPULANDO UM ARQUIVO
-    arquivo = open("palavras.txt", "r") #abrindo o arquivo como leitura
-    palavras = []
-    for linha in arquivo:
-        linha = linha.strip()   #retira os caracteres especiais das palavras (\n, espaços...)
-        palavras.append(linha)  #add cada linha (palavra neste caso) do arquivo na lista palavras
-    arquivo.close() #fecha o arquivo (sempre é interessante fechar para não deixar o sistema operacional com este arquivo aberto, consumindo memória, processamento, etc)
-
-    numero = random.randrange(0, len(palavras)) #gera um número randômico entre 0 e o tamanho da lista palavras (quantas palavras tem)
-    palavra_secreta = palavras[numero].upper()  #seleciona a palavra deste número (o índice) colocando todas as letras em maiúscula
-
-    letras_acertadas = ["_" for letra in palavra_secreta]
+    imprime_mensagem_abertura()
+    palavra_secreta = carrega_palavra_secreta()
+    letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
 
     enforcou = False
     acertou = False
@@ -25,22 +14,21 @@ def jogar():
     while(not enforcou and not acertou):
 
         chute = input("Qual letra? ")
-        chute = chute.strip().upper() #Se tiver espaço antes ou depois não considera e todas letras são maiúsculas
+        chute = chute.strip().upper()   # Se tiver espaço antes ou depois não considera e todas letras são maiúsculas
 
         if(chute in palavra_secreta):
-            index =  0
+            index = 0
             for letra in palavra_secreta:
-                if(chute == letra): #usa o upper pra passar tudo pra maiúscula pra não ter diferença se o usuário digitar maiúsculo ou minúsculo
+                if(chute == letra): # usa o upper pra passar tudo pra maiúscula pra não ter diferença se o usuário digitar maiúsculo ou minúsculo
                     letras_acertadas[index] = letra
                 index += 1
         else:
             erros += 1
-        
-        enforcou = erros == 6  #Aqui ta testando se erros é igual a 6, a resposta da TRUE ou FALSE, e é gravada em enforcou
-        acertou = "_" not in letras_acertadas #Se _ não tiver mais em letras_acertadas retorna TRUE
+
+        enforcou = erros == 6   # Aqui ta testando se erros é igual a 6, a resposta da TRUE ou FALSE, e é gravada em enforcou
+        acertou = "_" not in letras_acertadas # Se _ não tiver mais em letras_acertadas retorna TRUE
 
         print(letras_acertadas)
-                
 
     if(acertou):
         print("Você ganhou!")
@@ -48,9 +36,34 @@ def jogar():
     else:
         print("Você perdeu!")
         print()
-   
+
     print("fim do jogo!")
-   
+
+
+def imprime_mensagem_abertura():
+    print("**********************************")
+    print("   Bem vindo ao jogo da forca!")
+    print("**********************************")
+
+
+def carrega_palavra_secreta():
+    # MANIPULANDO UM ARQUIVO
+    arquivo = open("palavras.txt", "r")  # abrindo o arquivo como leitura
+    palavras = []
+    for linha in arquivo:
+        linha = linha.strip()   # retira os caracteres especiais das palavras (\n, espaços...)
+        palavras.append(linha)  #add cada linha (palavra neste caso) do arquivo na lista palavras
+    arquivo.close()  # fecha o arquivo (sempre é interessante fechar para não deixar o sistema operacional com este arquivo aberto, consumindo memória, processamento, etc)
+
+    numero = random.randrange(0, len(palavras)) # gera um número randômico entre 0 e o tamanho da lista palavras (quantas palavras tem)
+    palavra_secreta = palavras[numero].upper()  # seleciona a palavra deste número (o índice) colocando todas as letras em maiúscula
+
+    return palavra_secreta
+
+
+def inicializa_letras_acertadas(palavra):
+    return ["_" for letra in palavra]
+
 
 # Se for executado direto este será o main e então executará, senão não executa (para não executar no import)
 if(__name__ == "__main__"):

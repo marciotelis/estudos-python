@@ -79,3 +79,7 @@ def jogar():
     # print("{:02d}/{:02d}/{:4d}".format(27, 3, 2020))
 
     # ------------------------------------------------------------------------------------------------------------
+
+# Se for executado direto este será o main e então executará, senão não executa (para não executar no import)
+if(__name__ == "__main__"):
+    jogar()

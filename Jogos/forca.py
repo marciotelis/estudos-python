@@ -21,16 +21,17 @@ def jogar():
             mostra_letra_certa(chute, palavra_secreta, letras_acertadas)
         else:
             erros += 1
+            desenha_forca(erros)
 
-        enforcou = erros == 6   # Aqui ta testando se erros é igual a 6, a resposta da TRUE ou FALSE, e é gravada em enforcou
+        enforcou = erros == 7   # Aqui ta testando se erros é igual a 6, a resposta da TRUE ou FALSE, e é gravada em enforcou
         acertou = "_" not in letras_acertadas # Se _ não tiver mais em letras_acertadas retorna TRUE
 
         print(letras_acertadas)
 
     if(acertou):
-        print("Você ganhou!\n")
+        imprime_mensagem_vencedor()
     else:
-        print("Você perdeu!\n")
+        imprime_mensagem_perdedor(palavra_secreta)
 
     print("fim do jogo!\n")
 
@@ -73,6 +74,90 @@ def mostra_letra_certa(chute, palavra_secreta, letras_acertadas):
             letras_acertadas[index] = letra
         index += 1
 
+def imprime_mensagem_perdedor(palavra_secreta):
+    print("Puxa, você foi enforcado!")
+    print("A palavra era {}".format(palavra_secreta))
+    print("    _______________         ")
+    print("   /               \       ")
+    print("  /                 \      ")
+    print("//                   \/\  ")
+    print("\|   XXXX     XXXX   | /   ")
+    print(" |   XXXX     XXXX   |/     ")
+    print(" |   XXX       XXX   |      ")
+    print(" |                   |      ")
+    print(" \__      XXX      __/     ")
+    print("   |\     XXX     /|       ")
+    print("   | |           | |        ")
+    print("   | I I I I I I I |        ")
+    print("   |  I I I I I I  |        ")
+    print("   \_             _/       ")
+    print("     \_         _/         ")
+    print("       \_______/           ")
+
+
+def imprime_mensagem_vencedor():
+    print("Parabéns, você ganhou!")
+    print("       ___________      ")
+    print("      '._==_==_=_.'     ")
+    print("      .-\\:      /-.    ")
+    print("     | (|:.     |) |    ")
+    print("      '-|:.     |-'     ")
+    print("        \\::.    /      ")
+    print("         '::. .'        ")
+    print("           ) (          ")
+    print("         _.' '._        ")
+    print("        '-------'       ")
+
+
+def desenha_forca(erros):
+    print("  _______     ")
+    print(" |/      |    ")
+
+    if(erros == 1):
+        print(" |      (_)   ")
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 2):
+        print(" |      (_)   ")
+        print(" |      \     ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 3):
+        print(" |      (_)   ")
+        print(" |      \|    ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 4):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 5):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |            ")
+
+    if(erros == 6):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      /     ")
+
+    if (erros == 7):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      / \   ")
+
+    print(" |            ")
+    print("_|___         ")
+    print()
 
 # Se for executado direto este será o main e então executará, senão não executa (para não executar no import)
 if(__name__ == "__main__"):

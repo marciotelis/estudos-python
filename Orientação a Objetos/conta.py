@@ -14,7 +14,7 @@ class Conta:
     def deposita(self, valor):
         self.__saldo += valor
     
-    def __pode_sacar(self, valor_a_sacar):
+    def __pode_sacar(self, valor_a_sacar):  #métodos com __ antes funciona que nem para atributos: são métodos utilizados apenas na classe (privados)
         valor_disponivel_saque = self.__saldo + self.__limite
         return valor_a_sacar <= valor_disponivel_saque
 
@@ -44,3 +44,7 @@ class Conta:
     @limite.setter
     def limite(self, limite):
         self.__limite = limite
+
+    @staticmethod
+    def codigo_banco(): #métodos sem o self e com @staticmethod são métodos estáticos (é da classe, não precisa do objeto)
+        return "001"

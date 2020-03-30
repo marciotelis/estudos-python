@@ -48,3 +48,13 @@ class Conta:
     @staticmethod
     def codigo_banco(): #métodos sem o self e com @staticmethod são métodos estáticos (é da classe, não precisa do objeto)
         return "001"
+
+    # Apenas para lembrar como utiliza o dicionário, algo bem semelhante ao Json
+    # {'nome':'valor'}
+    # Podemos acessar qualquer valor pedindo apenas -> método['nome']
+    # ex:
+    #       códigos = Conta.codigos_bancos()
+    #       codigos['BB']
+    @staticmethod
+    def codigos_bancos():
+        return {'BB':'001', 'Caixa':'104', 'Bradesco': '237'}

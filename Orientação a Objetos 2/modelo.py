@@ -19,33 +19,38 @@ class Programa:
     def dar_like(self):
         self._likes += 1
 
+    def imprime(self):  #imprime padrão da classe mãe
+        print(f"Nome: {self._nome} - Ano: {self.ano} - Likes: {self._likes}")
+
 
 class Filme(Programa):
     def __init__(self, nome, ano, duracao):
         super().__init__(nome, ano) #super extende a classe Filme a classe mãe (Programa) enviando os valores (nome, ano) e utilizando os métodos e atributos
         self.duracao = duracao
+    
+    def imprime(self):  #quando chamar programa.imprime() na verdade vai chamar este específico
+        print(f"Nome: {self._nome} - Ano: {self.ano} - Duração: {self.duracao} min - Likes: {self._likes}")
 
 
 class Serie(Programa):
     def __init__(self, nome, ano, temporadas):
         super().__init__(nome, ano)
         self.temporadas = temporadas
-        
+    
+    def imprime(self):  #quando chamar programa.imprime() na verdade vai chamar este específico
+        print(f"Nome: {self._nome} - Ano: {self.ano} - Temporadas: {self.temporadas} - Likes: {self._likes}")
 
 
 vingadores = Filme("vingadores", 2018, 160)
 vingadores.dar_like()
-print(f"Nome: {vingadores.nome} - Ano: {vingadores.ano} - Duração: {vingadores.duracao} - Likes: {vingadores.likes}")
 
 atlanta = Serie("Atlanta", 2018, 2)
 
 atlanta.dar_like()
 atlanta.dar_like()
-print(f"Nome: {atlanta.nome} - Ano: {atlanta.ano} - Temporadas: {atlanta.temporadas} - Likes: {atlanta.likes}")
 
 
 filmes_e_series = [vingadores, atlanta]
 
 for programa in filmes_e_series:
-    detalhes = programa.duracao if hasattr(programa, "duracao") else programa.temporadas    # Verifica se tem o atributo duracao, se nao tiver usa o temporadas
-    print(f"Nome: {programa.nome} - Ano: {programa.ano} - Duração: {detalhes} - Likes: {programa.likes}")
+    programa.imprime()

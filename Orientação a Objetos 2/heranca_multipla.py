@@ -21,9 +21,9 @@ class Alura(Funcionario):
     def busca_perguntas_sem_resposta(self):
         print('Mostrando perguntas não respondidas do fórum')
 
-class Hipster:
-    def __str__(self):
-        return f"Hipster, {self.nome}"
+# class Hipster:
+#     def __str__(self):
+#         return f"Hipster, {self.nome}"  # Só para testar o mixin, neste caso pode funcionar mas se não tiver um nome na classe que herda não vai funcionar
 
 class Junior(Alura):
     pass
@@ -31,8 +31,8 @@ class Junior(Alura):
 class Pleno(Alura, Caelum):
     pass
 
-class Senior(Alura, Caelum, Hipster):
-    pass
+# class Senior(Alura, Caelum, Hipster):
+#     pass
 
 # jose = Junior()
 # jose.busca_perguntas_sem_resposta()
@@ -44,7 +44,9 @@ class Senior(Alura, Caelum, Hipster):
 # 
 # luan.mostrar_tarefas()
 
-print()
-ricardo = Senior("Ricardo")
-print (ricardo)
+# print()
+# ricardo = Senior("Ricardo")
+# print (ricardo)
+
+#Comentei os códigos de mixin porque senão acusaria erro, pois depende de nome
 

@@ -19,8 +19,8 @@ class Programa:
     def dar_like(self):
         self._likes += 1
 
-    def imprime(self):  #imprime padrão da classe mãe
-        print(f"Nome: {self._nome} - Ano: {self.ano} - Likes: {self._likes}")
+    def __str__(self):  # método especial (representação textual do objeto)
+        return f"Nome: {self._nome} - Ano: {self.ano} - Likes: {self._likes}"
 
 
 class Filme(Programa):
@@ -28,8 +28,8 @@ class Filme(Programa):
         super().__init__(nome, ano) #super extende a classe Filme a classe mãe (Programa) enviando os valores (nome, ano) e utilizando os métodos e atributos
         self.duracao = duracao
     
-    def imprime(self):  #quando chamar programa.imprime() na verdade vai chamar este específico
-        print(f"Nome: {self._nome} - Ano: {self.ano} - Duração: {self.duracao} min - Likes: {self._likes}")
+    def __str__(self):  #quando chamar programa.imprime() na verdade vai chamar este específico
+        return f"Nome: {self._nome} - Ano: {self.ano} - Duração: {self.duracao} min - Likes: {self._likes}"
 
 
 class Serie(Programa):
@@ -37,20 +37,50 @@ class Serie(Programa):
         super().__init__(nome, ano)
         self.temporadas = temporadas
     
-    def imprime(self):  #quando chamar programa.imprime() na verdade vai chamar este específico
-        print(f"Nome: {self._nome} - Ano: {self.ano} - Temporadas: {self.temporadas} - Likes: {self._likes}")
+    def __str__(self):  #quando chamar programa.imprime() na verdade vai chamar este específico
+        return f"Nome: {self._nome} - Ano: {self.ano} - Temporadas: {self.temporadas} - Likes: {self._likes}"
 
+
+class Playlist:
+    def __init__(self, nome, programas):
+        self.nome = nome
+        self._programas = programas
+    
+    def __getitem__(self, item):
+        return self._programas[item]
+
+    # @property
+    # def listagem(self):
+    #     return self._programas
+
+    def __len__(self):
+        return len(self._programas)
+    
 
 vingadores = Filme("vingadores", 2018, 160)
-vingadores.dar_like()
-
 atlanta = Serie("Atlanta", 2018, 2)
+tmep = Filme("todo mundo em pânico",1999, 100)
+demolidor = Serie("demolidor", 2016, 2)
 
+vingadores.dar_like()
+tmep.dar_like()
+tmep.dar_like()
+tmep.dar_like()
+tmep.dar_like()
+demolidor.dar_like()
+demolidor.dar_like()
 atlanta.dar_like()
 atlanta.dar_like()
+atlanta.dar_like()
 
 
-filmes_e_series = [vingadores, atlanta]
+filmes_e_series = [vingadores, atlanta, demolidor, tmep]
+playlist_fim_de_semana = Playlist("fim de semana", filmes_e_series)
 
-for programa in filmes_e_series:
-    programa.imprime()
+
+print(f"tamanho da minha playlist: {len(playlist_fim_de_semana)}")
+
+for programa in playlist_fim_de_semana: # for com um iterável, virou iterável pelo método __getitem__
+    print(programa) # Assim chama a representação textual da classe (__str__)
+
+print(f"Tá ou não tá? {demolidor in playlist_fim_de_semana}")   # Jeito de utilizar uma comparação, o in percorre a lista dentro da playlist e ve se tem demolidor (com o __getitem__ da pra iterear)

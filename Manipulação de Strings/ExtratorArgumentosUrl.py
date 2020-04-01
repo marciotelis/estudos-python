@@ -5,6 +5,12 @@ class ExtratorArgumentosUrl:
         else:
             raise LookupError("Url Inválida!!")   #raise retorna um erro para o usuário
     
+    def __len__(self):
+        return len(self.url)
+
+    def __str__(self):
+        return "alguma coisa"
+
     @staticmethod
     def urlEhValida(url):    # sendo classe estática não precisa receber o self e pode-se acessar diretamente esta classe
         if url and url.startswith("https://www.bytebank.com"):

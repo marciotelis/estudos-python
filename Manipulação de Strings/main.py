@@ -5,3 +5,6 @@ argumento = ExtratorArgumentosUrl(url)
 moeadaOrigem, moedaDestino = argumento.extraiArgumentos()
 valor = argumento.extraiValor()
 print(moeadaOrigem, moedaDestino, valor)
+
+print(len(argumento))
+print(argumento)

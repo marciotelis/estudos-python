@@ -13,8 +13,8 @@ class ExtratorArgumentosUrl:
             return False
     
     def ExtraiArgumentos(self):
-        buscaMoedaOrigem = "moedaorigem"
-        buscaMoedaDestino = "moedadestino"
+        buscaMoedaOrigem = "moedaorigem="
+        buscaMoedaDestino = "moedadestino="
 
         indiceInicialMoedadestino = self.encontraIndiceInicial(buscaMoedaDestino)
 
@@ -22,10 +22,23 @@ class ExtratorArgumentosUrl:
         IndiceFinalMoedaOrigem = self.url.find("&")
 
         moedaOrigem = self.url[IndiceInicialMoedaOrigem:IndiceFinalMoedaOrigem]
+        if moedaOrigem == "moedadestino":
+            self.trocaMoedaOrigem()
+            indiceInicialMoedadestino = self.encontraIndiceInicial(buscaMoedaDestino)
+
+            IndiceInicialMoedaOrigem = self.encontraIndiceInicial(buscaMoedaOrigem)
+            IndiceFinalMoedaOrigem = self.url.find("&")
+            
+            moedaOrigem = self.url[IndiceInicialMoedaOrigem:IndiceFinalMoedaOrigem]
+
         moedaDestino = self.url[indiceInicialMoedadestino:]
 
         return moedaOrigem, moedaDestino
 
     def encontraIndiceInicial(self, moedaBuscada):
-        return (self.url.find(moedaBuscada) + len(moedaBuscada) + 1)
+        return (self.url.find(moedaBuscada) + len(moedaBuscada))
+
+    def trocaMoedaOrigem(self):
+        self.url = self.url.replace("moedadestino", "real", 1)  #Usa o replace para modificar uma string por outra (o 1 no final indica que faz apenas uma vez)
+        print(self.url)
 

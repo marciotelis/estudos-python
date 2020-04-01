@@ -44,6 +44,9 @@
 O método sorted não modifica o valor no local, o valor original, retornando uma lista. Assim podemos usar o valor original em outras classes e métodos sem modificá-lo
 também podemos utilizar o key e acessar um método para dizer que por aí será ordenado. Ou ainda utilizanodo o attrgetter buscar um atributo
 '''
+from functools import total_ordering
+
+@total_ordering     #da a possibilidade de verificar o __eq__  o __lt__ em uma comparação
 class ContaSalario:
     def __init__(self, codigo):
         self._codigo = codigo
@@ -62,26 +65,45 @@ class ContaSalario:
             return (self._codigo == outro._codigo and self._saldo == outro._saldo)
             
     def __lt__(self, outro):        #lower than
-        return self._saldo < outro._saldo
+        if self._saldo != outro._saldo:
+            return self._saldo < outro._saldo
+        else:
+            return self._codigo < outro._codigo
     
 
 from operator import attrgetter
 
 conta16 = ContaSalario(16)
-conta16.deposita(1600)
+conta16.deposita(100)
 #print(conta16)
 
-conta17 = ContaSalario(16)
+conta17 = ContaSalario(17)
 conta17.deposita(1500)
 #print(conta17)
 
-contas = [conta16, conta17]
+conta18 = ContaSalario(18)
+conta18.deposita(100)
+#print(conta17)
+
+contas = [conta16, conta17, conta18]
 
 # for conta in sorted(contas, key=attrgetter("_saldo")):
 #     print(conta)
 
-print(conta16 < conta17)    # ta implementado no __lt__
-print(conta16 > conta17)    # não precisa implementar o __gt__ porque ja entende que é o contrario de __lt__
+# print(conta16 < conta17)    # ta implementado no __lt__
+# print(conta16 > conta17)    # não precisa implementar o __gt__ porque ja entende que é o contrario de __lt__
 
-for conta in sorted(contas):    # Agora podemos ordenar sem ter que utilizar um atributo "privado" fora da classe (por causa que tem o lt)
+# for conta in sorted(contas):    # Agora podemos ordenar sem ter que utilizar um atributo "privado" fora da classe (por causa que tem o lt)
+#     print(conta)
+
+# for conta in sorted(contas, key=attrgetter("_saldo", "_codigo")):       #ordenando com camadas de prioridade (criterio de desempate)
+#     print(conta)
+
+#modificando o __lt__ podemos fazer também essa ordem
+for conta in sorted(contas):   
     print(conta)
+
+print(conta16 < conta18)
+print(conta16 > conta18)
+print(conta16 == conta18)
+print(conta16 <= conta18)

@@ -11,6 +11,9 @@ class ExtratorArgumentosUrl:
     def __str__(self):
         return "alguma coisa"
 
+    def __eq__(self, outraInstancia):   # assim quando se compara uma instancia com a outra vai comparar o que estiver aqui (url no caso) e não os ids
+        return self.url == outraInstancia.url
+
     @staticmethod
     def urlEhValida(url):    # sendo classe estática não precisa receber o self e pode-se acessar diretamente esta classe
         if url and url.startswith("https://www.bytebank.com"):

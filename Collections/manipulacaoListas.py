@@ -26,3 +26,15 @@ print()
 print([(idade) for idade in idades if idade > 21])  #print de todas as idades da lista idades que são maiores de 21
 
 
+#-------------empacotando lista de tuplas e desempacotando-----------------------
+lista = [
+    ("Guilherme", 37, 1981),
+    ("Daniela", 31, 1987),
+    ("Paulo", 39, 1979)
+]
+
+for nome, idade, nascimento in lista:   # percorre por todo mas utiliza apenas o primeiro (desempacotando)
+    print(nome)
+
+for nome, _, _, in lista:               #só percorre pelo primeiro de cada tupla, não gastando tempo percorrendo o restante
+    print(nome)

@@ -16,7 +16,8 @@
 
 #--------------SEPARAR A STRING COM ARGUMENTO SEPARADOR (SPLIT)-------------------
 
-lista = "valor1:valor2:valor3"
-lista_separada = lista.split(":")
-print(lista)
-print(lista_separada)
+# lista = "valor1:valor2:valor3"
+# lista_separada = lista.split(":")
+# print(lista)
+# print(lista_separada)
+

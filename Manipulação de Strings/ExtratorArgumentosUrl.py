@@ -7,7 +7,7 @@ class ExtratorArgumentosUrl:
     
     @staticmethod
     def urlEhValida(url):    # sendo classe estática não precisa receber o self e pode-se acessar diretamente esta classe
-        if url:
+        if url and url.startswith("https://www.bytebank.com"):
             return True
         else:
             return False

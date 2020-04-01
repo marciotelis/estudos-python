@@ -1,7 +1,7 @@
 class ExtratorArgumentosUrl:
     def __init__(self, url):
         if(self.urlEhValida(url)):
-            self.url = url
+            self.url = url.lower()
         else:
             raise LookupError("Url Inválida!!")   #raise retorna um erro para o usuário
     
@@ -13,8 +13,8 @@ class ExtratorArgumentosUrl:
             return False
     
     def ExtraiArgumentos(self):
-        buscaMoedaOrigem = "moedaorigem="
-        buscaMoedaDestino = "moedadestino="
+        buscaMoedaOrigem = "moedaorigem=".lower()
+        buscaMoedaDestino = "moedadestino=".lower()
 
         indiceInicialMoedadestino = self.encontraIndiceInicial(buscaMoedaDestino)
 
@@ -28,7 +28,7 @@ class ExtratorArgumentosUrl:
 
             IndiceInicialMoedaOrigem = self.encontraIndiceInicial(buscaMoedaOrigem)
             IndiceFinalMoedaOrigem = self.url.find("&")
-            
+
             moedaOrigem = self.url[IndiceInicialMoedaOrigem:IndiceFinalMoedaOrigem]
 
         moedaDestino = self.url[indiceInicialMoedadestino:]

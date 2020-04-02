@@ -18,7 +18,10 @@ class CpfCnpj:
             raise ValueError("Documento inválido!")
 
     def __str__(self):
-        return self.format_cpf()
+        if self.tipo_documento == "cpf":
+            return self.format_cpf()
+        elif self.tipo_documento == "cnpj":
+            return self.format_cnpj()
 
     def cpf_eh_valido(self, cpf):
         validador = CPF()
@@ -31,3 +34,7 @@ class CpfCnpj:
     def cnpj_e_valido(self, cnpj):
         validador = CNPJ()
         return validador.validate(cnpj)
+
+    def format_cnpj(self):
+        mascara = CNPJ()
+        return mascara.mask(self.cnpj)

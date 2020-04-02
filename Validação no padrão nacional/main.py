@@ -24,6 +24,9 @@ from validate_docbr import CNPJ
 #print(cpf)
 
 cnpj_exemplo = "35379838000112"
+cpf_exemplo = "00562952004"
 
 documento = CpfCnpj(cnpj_exemplo, "cnpj")
-#print(documento)
+print(documento)
+documento2 = CpfCnpj(cpf_exemplo, "cpf")
+print(documento2)

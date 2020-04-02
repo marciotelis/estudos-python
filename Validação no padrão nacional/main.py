@@ -34,6 +34,7 @@ documento2 = Documento.cria_documento(cpf_exemplo)
 print(documento2)
 '''
 
+'''
 #   Validando telefones com expressões regulares
 
 import re
@@ -42,12 +43,10 @@ from TelefonesBr import TelefonesBr
 telefone = "552126481234"
 
 telefone_objeto = TelefonesBr(telefone)
-
-# padrao = "([0-9]{2,3})([0-9]{4,5})([0-9]{4})"
-# resposta = re.findall(padrao, telefone)
-
 print(telefone_objeto)
+'''
 
+from datas_br import DatasBr
 
-
-
+cadastro = DatasBr()
+print(cadastro)

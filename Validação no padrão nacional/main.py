@@ -17,7 +17,7 @@ print(bairro, cidade, uf)
 
 '''
 
-from cpf_cnpj import CpfCnpj
+from cpf_cnpj import Documento
 from validate_docbr import CNPJ
 
 #cpf = Cpf("00562952004")
@@ -26,7 +26,7 @@ from validate_docbr import CNPJ
 cnpj_exemplo = "35379838000112"
 cpf_exemplo = "00562952004"
 
-documento = CpfCnpj(cnpj_exemplo, "cnpj")
+documento = Documento.cria_documento(cnpj_exemplo)
 print(documento)
-documento2 = CpfCnpj(cpf_exemplo, "cpf")
+documento2 = Documento.cria_documento(cpf_exemplo)
 print(documento2)

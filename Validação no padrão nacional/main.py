@@ -46,7 +46,19 @@ telefone_objeto = TelefonesBr(telefone)
 print(telefone_objeto)
 '''
 
+'''
+#   FORMATAÇÃO DE DATAS
+
 from datas_br import DatasBr
 
 cadastro = DatasBr()
 print(cadastro)
+'''
+
+from datetime import datetime, timedelta
+from datas_br import DatasBr
+
+hoje = datetime.today()
+amanha = datetime.today() + timedelta(days=1, hours=20)
+
+print(amanha - hoje)

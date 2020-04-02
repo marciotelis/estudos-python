@@ -46,4 +46,4 @@ for elemento in aparicoes.values(): # retorna os valores
 for elemento in aparicoes.items():  # retorna os dois
     print(elemento)
 
-print([f"palavra {chave}" for chave in aparicoes.keys()])
+print([f"palavra {chave}" for chave in aparicoes.keys()])       # adicionando uma palavra a cada elemento

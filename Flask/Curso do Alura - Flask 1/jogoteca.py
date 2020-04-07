@@ -61,10 +61,10 @@ def autenticar():
             return redirect(proxima_pagina)
         else:
             flash("Login ou senha inválidos, tente novamente!")
-            return redirect(url_for("login"))
+            return redirect(url_for("login", proxima=url_for("novo")))
     else:
         flash("Login ou senha inválidos, tente novamente!")
-        return redirect(url_for("login"))
+        return redirect(url_for("login", proxima=url_for("novo")))
 
 @app.route("/logout")
 def logout():

@@ -3,3 +3,31 @@
 github -> https://github.com/CoreyMSchafer/code_snippets/tree/master/Python/Flask_Blog
 
 Playlist do tutorial no youtube -> https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH
+
+
+Criando banco de dados:
+	Depois da criação das classes (User e post) e toda modificação do código criando as instancia db do SQLAlchemy pelo terminal faz os seguintes comandos:
+		Vai até a pasta do projeto
+
+			python 
+				>>>from flaskblog import db
+				>>>db.create_all()
+				//depois podemos criar algum usuario para testar no banco de dados
+					>>> from flaskblog import User, Post
+					>>> user_1 = User(username='Corey', email='c@demo.com', password='password')
+					>>> db.session.add(user_1)
+					>>> user_2 = User(username='JohnDow', email='jd@demo.com', password='password')
+					>>> db.session.add(user_2)
+					>>> db.session.commit()
+			
+			Algumas funções para usar e testar o bd:
+
+			>>> User.query.all()									//para listar todo o banco
+			>>> User.query.filter_by(username='Corey').all()		//filtrando por nome
+			>>> user = User.query.get(1) 							//colocando uma variavel com a query do id=1
+			>>> user												//printa as informações dessa query
+			>>> user.id												//printa o atributo id (coluna)
+			>>> user.posts											//busca os posts e printa (posts nao é coluna, referencia a outra tabela que tem os posts)
+			>>> user.username										//printa o username
+			>>> user.email											//printa o email
+			>>> post_1 = Post(title='Blog 1', content='First Post Content!', user_id=user.id)		//criando um post

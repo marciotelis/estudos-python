@@ -11,6 +11,7 @@ Criando banco de dados:
 
 			python 
 				>>>from flaskblog import db
+				>>>from flaskblog,models import User, Post
 				>>>db.create_all()
 				//depois podemos criar algum usuario para testar no banco de dados
 					>>> from flaskblog import User, Post
@@ -30,4 +31,16 @@ Criando banco de dados:
 			>>> user.posts											//busca os posts e printa (posts nao é coluna, referencia a outra tabela que tem os posts)
 			>>> user.username										//printa o username
 			>>> user.email											//printa o email
-			>>> post_1 = Post(title='Blog 1', content='First Post Content!', user_id=user.id)		//criando um post
+			
+			Criando os posts:
+
+			>>> post_1 = Post(title='Blog 1', content='First Post Content!', user_id=user.id)
+			>>> post_2 = Post(title='Blog 2', content='Second Post Content!', user_id=user.id) 
+			>>> db.session.add(post_1)
+			>>> db.session.add(post_2) 
+			>>> db.session.commit()
+
+			Excluindo toda a estrutura do bd:
+
+			>>>db.drop_all()
+			
